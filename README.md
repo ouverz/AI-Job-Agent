@@ -1,24 +1,40 @@
 # 🤖 AI Job Application Agent
 
-An AI-powered agent that reads your resume and writes personalized cover letters for job listings. Built with LangChain and OpenAI.
+Stop sending the same cover letter to every application. This agent reads your CV, understands a job description, and generates a tailored cover letter — one that speaks directly to what the role is asking for, emphasising your work experience over education.
+
+Built with **LangChain**, **Anthropic Claude 3**, and **ChromaDB**.
 
 ---
 
-## 🚀 Features
+## How it works
 
-- 📄 Parse PDF resumes into searchable knowledge
-- 🧠 Use vector similarity to match resume content with job descriptions
-- ✍️ Auto-generate tailored cover letters using Claude 3, emphasizes work experience over education/internships
-- 📄 Error handling - includes validation and error messages
-- 💬 Easy prompt interface to generate applications
+1. Your PDF resume is parsed and indexed into a ChromaDB vector store
+2. Vector similarity matching identifies which parts of your experience are most relevant to the job description
+3. Claude 3 generates a tailored cover letter grounded in that matched content — prioritising work experience over education or internships
 
+The result is a first draft that's genuinely personalised, not just a template with your name swapped in.
 
-## 🛠 Tech Stack
+---
 
-- [LangChain](https://www.langchain.com/)
-- [Anthorpic Claude-3](https://www.anthropic.com/claude)
-- [ChromaDB](https://www.trychroma.com/)
-- Python, PyPDF
+## 🛠️ Stack
+
+| Component | Technology |
+|---|---|
+| LLM | Anthropic Claude 3 |
+| Orchestration | LangChain |
+| Vector Store | ChromaDB |
+| PDF Parsing | PyPDF |
+| Language | Python |
+
+---
+
+## ✨ Features
+
+- 📄 Parse PDF resumes into searchable vector knowledge
+- 🧠 Vector similarity matching between resume content and job description
+- ✍️ Tailored cover letter generation — emphasises work experience over education
+- ✅ Input validation and error handling
+- 💬 Simple prompt interface
 
 ---
 
@@ -26,15 +42,46 @@ An AI-powered agent that reads your resume and writes personalized cover letters
 
 ```bash
 # Clone the repo
-git clone https://github.com/ouverz/job-agent.git
-cd job-agent
+git clone https://github.com/ouverz/AI-Job-Agent.git
+cd AI-Job-Agent
 
 # Install dependencies
 pip install -r requirements.txt
 
+# Configure environment
+cp .env.example .env
+# Add your Anthropic API key to .env
+
 # Add your resume
 mkdir data
-put resume.pdf in the data folder
+# Place your resume.pdf in the data/ folder
 
-# run application
+# Run
 python cover_letter.py
+```
+
+---
+
+## 💡 Usage
+
+When prompted, paste in the job description you're applying for. The agent will match it against your resume and output a tailored cover letter.
+
+---
+
+## 🗺️ Roadmap
+
+- Support for multiple output formats (PDF, DOCX)
+- Multi-provider LLM support (OpenAI, Gemini)
+- Batch processing for multiple job descriptions
+- Web UI
+
+---
+
+## 📄 License
+
+MIT License — see LICENSE file for details.
+
+---
+
+Built by [Ofer Kulka](https://www.oferkulka.com) — Senior Data & AI Engineer, Frankfurt.  
+[LinkedIn](https://linkedin.com/in/oferkulka) · [GitHub](https://github.com/ouverz)
